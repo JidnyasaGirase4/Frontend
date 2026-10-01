@@ -1,0 +1,118 @@
+/* ───────────── Service cards (home + services page) ───────────── */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.editorial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.editorial-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(248, 162, 24, 0.4);
+  box-shadow: 0 20px 44px rgba(232, 137, 12, 0.18);
+}
+
+.editorial-card-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 104px;
+  padding: 0 24px;
+  overflow: hidden;
+  background: var(--gradient-primary);
+}
+
+.editorial-card-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--color-white);
+  color: var(--color-primary-dark);
+  box-shadow: 0 8px 20px rgba(232, 137, 12, 0.22);
+  transition: transform 0.4s var(--ease);
+}
+
+.editorial-card:hover .editorial-card-icon {
+  transform: scale(1.08) rotate(-6deg);
+}
+
+.editorial-card-watermark {
+  position: absolute;
+  right: -14px;
+  bottom: -22px;
+  color: rgba(255, 255, 255, 0.28);
+  transition: transform 0.5s var(--ease);
+}
+
+.editorial-card:hover .editorial-card-watermark {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.editorial-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 24px 24px;
+}
+
+.editorial-card h3 {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.editorial-card p {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+
+.editorial-card a {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--color-primary-dark);
+  transition: gap 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.editorial-card a:hover {
+  gap: 12px;
+  background: var(--gradient-primary);
+  color: var(--color-white);
+}
+
+@media (max-width: 960px) {
+  .editorial-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

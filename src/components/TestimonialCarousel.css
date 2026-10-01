@@ -1,0 +1,280 @@
+/* ───────────── Testimonial band ───────────── */
+.quote-band {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--gradient-dark);
+  padding: 64px 0;
+}
+
+.quote-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(520px 320px at 100% 0%, rgba(248, 162, 24, 0.26), transparent 70%),
+    radial-gradient(420px 280px at 0% 100%, rgba(248, 162, 24, 0.12), transparent 70%),
+    radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 1.2px),
+    linear-gradient(135deg, rgba(31, 31, 30, 0.93) 0%, rgba(43, 43, 42, 0.88) 55%, rgba(58, 58, 57, 0.84) 100%),
+    url('/images/project-house.jpeg') center / cover no-repeat;
+  background-size: auto, auto, 26px 26px, auto, cover;
+}
+
+@media (max-width: 640px) {
+  .quote-band {
+    padding: 44px 0;
+  }
+}
+
+/* Shared with the Testimonials page */
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 18px;
+}
+
+.star {
+  display: inline-flex;
+  color: #dcdad5;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.star.filled {
+  color: #fdb93a;
+  text-shadow: 0 2px 8px rgba(248, 162, 24, 0.35);
+}
+
+.testimonial-text {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: var(--color-secondary);
+  margin-bottom: 20px;
+  min-height: 90px;
+}
+
+.testimonial-author {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+/* ───────────── Home carousel: cards in pages of 3 ───────────── */
+.tcarousel {
+  text-align: left;
+}
+
+.tcarousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.tcarousel-track {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  padding: 10px 0 24px;
+}
+
+.tcarousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.tcarousel-page {
+  flex: 0 0 100%;
+  display: grid;
+  gap: 22px;
+  align-items: stretch;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.tcarousel-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 28px 26px 24px;
+  background: var(--color-white);
+  border: 1px solid rgba(248, 162, 24, 0.2);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.tcarousel-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(248, 162, 24, 0.5);
+  box-shadow: 0 18px 40px rgba(232, 137, 12, 0.18);
+}
+
+.tcarousel-quote {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  color: rgba(248, 162, 24, 0.22);
+}
+
+.tcarousel-card .stars {
+  margin-bottom: 14px;
+}
+
+.tcarousel-card blockquote {
+  flex: 1;
+  margin: 0 0 22px;
+  color: var(--color-text);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.tcarousel-card figcaption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.tcarousel-card figcaption span {
+  display: flex;
+  flex-direction: column;
+}
+
+.tcarousel-card strong {
+  color: var(--color-secondary);
+  font-size: 0.98rem;
+}
+
+.tcarousel-card small {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* Arrows sit beside the cards, in their own flex columns (no overlap) */
+.tcarousel-arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gradient-dark);
+  color: var(--color-white);
+  box-shadow: 0 8px 18px rgba(30, 30, 29, 0.28);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.tcarousel-arrow:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(30, 30, 29, 0.36);
+}
+
+/* keep the dark look at either end of the row; only the cursor changes */
+.tcarousel-arrow:disabled {
+  cursor: default;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .tcarousel-stage {
+    gap: 8px;
+  }
+
+  .tcarousel-arrow {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(248, 162, 24, 0.28);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.dot:hover {
+  background: rgba(248, 162, 24, 0.5);
+}
+
+.dot.active {
+  width: 30px;
+  background: var(--gradient-primary);
+}
+
+/* Controls on the dark testimonial band */
+.quote-band .tcarousel-arrow {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: none;
+}
+
+.quote-band .tcarousel-arrow:hover:not(:disabled) {
+  background: var(--gradient-primary);
+  border-color: transparent;
+}
+
+.quote-band .dot {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.quote-band .dot:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.quote-band .dot.active {
+  background: var(--gradient-primary);
+}
+
+/* Light variant: the Testimonials page already opens with a dark banner, so its band stays cream */
+.quote-band.quote-band-light {
+  background: linear-gradient(135deg, #fff4df 0%, #fffaf1 55%, #ffffff 100%);
+}
+
+.quote-band.quote-band-light::before {
+  background:
+    radial-gradient(520px 320px at 100% 0%, rgba(248, 162, 24, 0.18), transparent 70%),
+    radial-gradient(rgba(232, 137, 12, 0.09) 1.2px, transparent 1.2px);
+  background-size: auto, 28px 28px;
+}
+
+.quote-band.quote-band-light .tcarousel-arrow {
+  background: var(--gradient-dark);
+  border: none;
+  box-shadow: 0 8px 18px rgba(30, 30, 29, 0.28);
+}
+
+.quote-band.quote-band-light .tcarousel-arrow:hover:not(:disabled) {
+  background: var(--gradient-dark);
+  box-shadow: 0 12px 24px rgba(30, 30, 29, 0.36);
+}
+
+.quote-band.quote-band-light .dot {
+  background: rgba(248, 162, 24, 0.28);
+}
+
+.quote-band.quote-band-light .dot:hover {
+  background: rgba(248, 162, 24, 0.5);
+}
+
+.quote-band.quote-band-light .dot.active {
+  background: var(--gradient-primary);
+}

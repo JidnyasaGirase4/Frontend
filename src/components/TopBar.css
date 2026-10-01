@@ -1,0 +1,73 @@
+.topbar {
+  position: relative;
+  background: linear-gradient(90deg, #1f1f1e 0%, #3a3a39 60%, #4a4a49 100%);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.84rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary) 30%, var(--color-primary) 70%, transparent);
+  opacity: 0.7;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 40px;
+}
+
+.topbar-contact {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.topbar-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 500;
+  transition: color 0.2s var(--ease);
+}
+
+.topbar-contact a svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.topbar-contact a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 640px) {
+  .topbar-inner {
+    justify-content: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .topbar-contact span {
+    display: none;
+  }
+
+  .topbar-contact {
+    gap: 12px;
+  }
+
+  .topbar-contact a {
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}

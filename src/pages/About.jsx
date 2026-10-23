@@ -13,7 +13,7 @@ function About() {
   const { about: c } = useContent()
   const { data, loading, error } = useApi(api.getAbout)
   usePageMeta(c.meta.title, c.meta.description)
-  const { team = [], stats = [], serviceAreas = [], certifications = [] } = data || {}
+  const { team = [], stats = [],certifications = [] } = data || {}
 
   return (
     <>
@@ -104,28 +104,6 @@ function About() {
         </div>
       </section>
 
-      <section className="section section-alt" id="team">
-        <div className="container">
-          <div className="section-title">
-            <SectionLabel>{c.team.label}</SectionLabel>
-            <h2>{c.team.title}</h2>
-          </div>
-          <div className="team-grid">
-            {team.map((member) => (
-              <div className="team-card" key={member.name}>
-                {member.photo ? (
-                  <img className="team-photo" src={member.photo} alt={member.name} />
-                ) : (
-                  <div className="team-avatar">{member.initials}</div>
-                )}
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section cert-section">
         <div className="container">
           <div className="section-title section-title-light">
@@ -146,17 +124,25 @@ function About() {
         </div>
       </section>
 
-      <section className="section section-alt">
+      <section className="section section-alt" id="team">
         <div className="container">
           <div className="section-title">
-            <SectionLabel>{c.areas.label}</SectionLabel>
-            <h2>{c.areas.title}</h2>
+            <SectionLabel>{c.team.label}</SectionLabel>
+            <h2>{c.team.title}</h2>
           </div>
-          <ul className="area-list area-list-center">
-            {serviceAreas.map((area) => (
-              <li key={area}>{area}</li>
+          <div className="team-grid">
+            {team.map((member) => (
+              <div className="team-card" key={member.name}>
+                {member.photo ? (
+                  <img className="team-photo" src={member.photo} alt={member.name} />
+                ) : (
+                  <div className="team-avatar">{member.initials}</div>
+                )}
+                <h3>{member.name}</h3>
+                <p>{member.role}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
